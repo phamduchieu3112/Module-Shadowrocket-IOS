@@ -1,0 +1,17 @@
+#!name = Dịch lời bài hát Spotify
+#!desc = Tự chỉnh sửa AppID và Khóa bảo mật (Secret Key) của riêng bạn.
+
+[Script]
+spotify歌词翻译 = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/phamduchieu3112/Module-Shadowrocket-IOS/refs/heads/main/spotify-lyric.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
+
+/*
+----------- Đăng ký API Ứng dụng dịch Baidu (Có bản Tiêu chuẩn và bản Cao cấp, khuyên dùng bản Cao cấp) -----------
+Từ ngày 01/08/2022, hạn mức gọi API dịch thuật thông thường miễn phí của bản Tiêu chuẩn là 50.000 ký tự/tháng, bản Cao cấp là 1.000.000 ký tự/tháng.
+    Đăng ký tài khoản Nhà phát triển cá nhân Baidu: http://api.fanyi.baidu.com/register
+    Sau khi đăng ký, bạn có thể tự chọn có thực hiện xác thực danh tính thực hay không (Bản cao cấp yêu cầu xác thực).
+    Kích hoạt dịch vụ API (Dịch thuật thông thường): https://fanyi-api.baidu.com/choose
+    Sau khi thành công, bạn có thể xem AppID và Khóa bảo mật (Secret Key) của mình (Tuyệt đối không để lộ cho bất kỳ ai): http://api.fanyi.baidu.com/manage/developer
+*/
+
+[MITM]
+hostname = %APPEND% spclient.wg.spotify.com
