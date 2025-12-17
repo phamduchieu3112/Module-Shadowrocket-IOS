@@ -1,0 +1,14 @@
+#!name = Spotify Premium
+#!desc = Mở khóa một phần tính năng Premium. Lưu ý: Nên đăng xuất rồi đăng nhập lại, không thể thiết lập chất lượng âm thanh ở mức "Rất cao" (Very High).
+# 1. Giao diện tìm kiếm: Có thể chuyển đổi và phát toàn bộ danh sách nhạc/bài hát tùy ý.
+# 2. Thư viện nhạc: Có thể chuyển đổi và phát toàn bộ các bài hát đã thích tùy ý.
+
+[Header Rewrite]
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[MITM]
+hostname = %APPEND% spclient.wg.spotify.com, *spclient.spotify.com
+
+[Script]
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://github.com/phamduchieu3112/Module-Shadowrocket-IOS/blob/main/spotify-json.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://github.com/phamduchieu3112/Module-Shadowrocket-IOS/blob/main/spotify-proto.js,script-update-interval=0
