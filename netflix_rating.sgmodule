@@ -1,4 +1,4 @@
-#!name = All In One
+#!name = Netflix Ratings and DualSub
 #!desc = Author: pdhieuuu
 #!author = pdhieuuu
 #!homepage = https://www.instagram.com/pdhieuuu/
@@ -16,3 +16,4 @@ Netflix-Dualsub-Setting = type=http-request,pattern=https:\/\/setting.nflxvideo.
 
 [MITM]
 hostname = %APPEND% ios.prod.ftl.netflix.com,*.nflxvideo.net
+
